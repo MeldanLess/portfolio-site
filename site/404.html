@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="ru" data-theme="auto">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Страница не найдена — Your Name</title>
+  <meta name="description" content="Страница, которую вы искали, не существует.">
+  <meta name="robots" content="noindex">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="css/styles.css">
+
+  <!-- Держим страницу 404 в той же теме, что и остальной сайт. -->
+  <script>
+    (function () {
+      try {
+        var saved = localStorage.getItem('theme');
+        if (saved === 'light' || saved === 'dark') {
+          document.documentElement.setAttribute('data-theme', saved);
+        }
+      } catch (e) { /* приватный режим: откатываемся к системной теме */ }
+    })();
+  </script>
+</head>
+<body>
+  <main class="section">
+    <div class="container error-page">
+      <p class="eyebrow">Ошибка 404</p>
+      <h1>Такой страницы нет</h1>
+      <p class="section-lead">
+        Ссылка могла устареть, или страница переехала.
+      </p>
+      <p class="error-action">
+        <a class="btn btn-primary" href="/">На главную</a>
+      </p>
+    </div>
+  </main>
+</body>
+</html>

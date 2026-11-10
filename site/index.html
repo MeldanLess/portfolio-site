@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="ru" data-theme="auto">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- ============================ SEO ============================ -->
+  <title>Your Name — Python: backend, данные, автоматизация</title>
+  <meta name="description" content="Студент IT-направления: пишу production-ready backend на Python, инструменты для данных и автоматизацию. Портфолио избранных проектов с живыми демо и инженерными заметками.">
+  <link rel="canonical" href="https://your-domain.com/">
+
+  <!-- ======================= Open Graph / Twitter ==================== -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://your-domain.com/">
+  <meta property="og:title" content="Your Name — Python: backend, данные, автоматизация">
+  <meta property="og:description" content="Студент IT-направления: пишу production-ready backend на Python, инструменты для данных и автоматизацию.">
+  <meta property="og:image" content="https://your-domain.com/assets/og-image.svg">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Your Name — Python: backend, данные, автоматизация">
+  <meta name="twitter:description" content="Студент IT-направления: пишу production-ready backend на Python, инструменты для данных и автоматизацию.">
+  <meta name="twitter:image" content="https://your-domain.com/assets/og-image.svg">
+
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="css/styles.css">
+
+  <!-- Выполняется до первой отрисовки: применяет сохранённую тему (чтобы не
+       было вспышки неверных цветов) и помечает документ как «JS включён»,
+       чтобы CSS-анимация появления могла скрывать элементы. Без JS ничего
+       не скрывается. -->
+  <script>
+    (function () {
+      var root = document.documentElement;
+      root.classList.add('js');
+      try {
+        var saved = localStorage.getItem('theme');
+        if (saved === 'light' || saved === 'dark') {
+          root.setAttribute('data-theme', saved);
+        }
+      } catch (e) { /* приватный режим: откатываемся к системной теме */ }
+    })();
+  </script>
+
+  <!-- ==================== Структурированные данные (Person) ==================== -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Your Name",
+    "url": "https://your-domain.com",
+    "jobTitle": "Инженер-разработчик ПО",
+    "sameAs": ["https://github.com/MeldanLess"]
+  }
+  </script>
+</head>
+
+<body>
+  <a class="skip-link" href="#main">Перейти к содержимому</a>
+
+  <!-- ============================= Шапка ============================= -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="#top">
+        <span class="brand-mark" aria-hidden="true">YN</span>
+        <span class="brand-text">Your Name</span>
+      </a>
+
+      <nav class="site-nav" id="site-nav" aria-label="Основная навигация">
+        <ul>
+          <li><a href="#work">Работы</a></li>
+          <li><a href="#about">Обо мне</a></li>
+          <li><a href="#skills">Навыки</a></li>
+          <li><a href="#timeline">Путь</a></li>
+          <li><a href="#contact">Контакты</a></li>
+        </ul>
+      </nav>
+
+      <div class="header-actions">
+        <button class="icon-btn" id="theme-toggle" type="button"
+                aria-label="Переключить цветовую тему" title="Переключить цветовую тему">
+          <svg class="icon icon-sun" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+            <circle cx="12" cy="12" r="4.5"/>
+            <path d="M12 2v2.5M12 19.5V22M2 12h2.5M19.5 12H22M4.9 4.9l1.8 1.8M17.3 17.3l1.8 1.8M19.1 4.9l-1.8 1.8M6.7 17.3l-1.8 1.8"/>
+          </svg>
+          <svg class="icon icon-moon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+            <path d="M20 14.5A8.5 8.5 0 0 1 9.5 4a8.5 8.5 0 1 0 10.5 10.5Z"/>
+          </svg>
+        </button>
+
+        <a class="btn btn-primary btn-sm" href="https://github.com/MeldanLess" rel="noopener">
+          GitHub
+        </a>
+
+        <button class="icon-btn nav-toggle" id="nav-toggle" type="button"
+                aria-label="Открыть меню" aria-expanded="false" aria-controls="site-nav">
+          <svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+            <path d="M4 7h16M4 12h16M4 17h16"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main id="main">
+    <span id="top"></span>
+
+    <!-- ============================== Первый экран ============================== -->
+    <section class="hero">
+      <div class="container hero-inner">
+        <p class="eyebrow reveal">Открыт к junior- и стажировочным позициям — лето 2027</p>
+        <h1 class="reveal">Привет, я <span class="accent">Your Name</span>.</h1>
+        <p class="hero-lead reveal">
+          Делаю backend на Python, инструменты для данных и автоматизацию, которыми
+          действительно пользуются. Для меня важны чистый код, честная документация
+          и решения, которые продолжают работать.
+        </p>
+
+        <div class="hero-actions reveal">
+          <a class="btn btn-primary" href="#work">Смотреть проекты</a>
+          <a class="btn btn-ghost" href="mailto:you@example.com">Написать мне</a>
+        </div>
+
+        <ul class="hero-meta reveal">
+          <li><strong>Стек</strong> Python · FastAPI · PostgreSQL · Docker</li>
+          <li><strong>Фокус</strong> Backend · Данные · Автоматизация</li>
+          <li><strong>Статус</strong> Открыт к junior- и стажировочным позициям</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ======================= Сейчас в работе ======================= -->
+    <section class="strip" aria-labelledby="currently">
+      <div class="container strip-inner reveal">
+        <span class="strip-label" id="currently">Сейчас</span>
+        <p class="strip-text">
+          Довожу API-проект до конца: структурированное логирование, развёрнутый
+          инстанс и мои собственные отклики на вакансии в качестве тестовых данных.
+        </p>
+      </div>
+    </section>
+
+    <!-- ============================== Работы ============================== -->
+    <section class="section" id="work" aria-labelledby="work-title">
+      <div class="container">
+        <header class="section-head reveal">
+          <p class="eyebrow">Избранные работы</p>
+          <h2 id="work-title">Проекты</h2>
+          <p class="section-lead">
+            Каждый проект развёрнут, задокументирован и покрыт тестами — с записанными
+            компромиссами. Здесь перечислены только законченные работы.
+          </p>
+        </header>
+
+        <div class="grid projects">
+
+          <article class="card reveal">
+            <div class="card-top">
+              <h3>Сайт-портфолио</h3>
+              <span class="badge badge-live">Онлайн</span>
+            </div>
+            <p class="card-body">
+              Этот сайт. Ни сборки, ни зависимостей: один HTML-файл и один файл стилей.
+              Публикуется в GitHub Pages из CI меньше чем за минуту.
+            </p>
+            <ul class="tag-list">
+              <li>HTML</li><li>CSS</li><li>Vanilla JS</li><li>GitHub Actions</li>
+            </ul>
+            <p class="card-links">
+              <a href="https://github.com/MeldanLess/portfolio-site" rel="noopener">Исходники</a>
+              <a href="https://your-domain.com/" rel="noopener">Живое демо</a>
+            </p>
+          </article>
+
+          <article class="card reveal">
+            <div class="card-top">
+              <h3>Документированный REST API</h3>
+              <span class="badge badge-live">Онлайн</span>
+            </div>
+            <p class="card-body">
+              Сервис на FastAPI, устроенный как production: JWT-аутентификация, миграции
+              Alembic, PostgreSQL, документация OpenAPI и набор тестов, который идёт против
+              настоящей базы, а не против SQLite.
+            </p>
+            <ul class="tag-list">
+              <li>FastAPI</li><li>SQLAlchemy</li><li>PostgreSQL</li><li>Docker</li><li>pytest</li>
+            </ul>
+            <p class="card-links">
+              <a href="https://github.com/MeldanLess/rest-api" rel="noopener">Исходники</a>
+              <a href="https://api.example.com/docs" rel="noopener">Документация API</a>
+            </p>
+          </article>
+
+        </div>
+
+        <p class="work-note reveal">
+          Впереди ещё три: full-stack трекер финансов, дашборд по рынку вакансий и
+          бот-планировщик учёбы. Каждый попадает сюда в день, когда он развёрнут и
+          задокументирован, а не в день, когда начат.
+        </p>
+      </div>
+    </section>
+
+    <!-- ============================= Обо мне ============================= -->
+    <section class="section section-alt" id="about" aria-labelledby="about-title">
+      <div class="container about-grid">
+        <header class="section-head reveal">
+          <p class="eyebrow">Обо мне</p>
+          <h2 id="about-title">Как я работаю</h2>
+        </header>
+
+        <div class="prose reveal">
+          <p>
+            Я студент IT-направления, выпускаюсь летом 2027, и занимаюсь backend и
+            данными на Python. Мне нравятся задачи, где сложная часть — это
+            моделирование данных, а не фреймворк. И мне нравится доводить до конца
+            небольшие, покрытые тестами куски, а не начинать большие и не заканчивать.
+          </p>
+          <p>
+            Это портфолио намеренно компактное: пять проектов, каждый развёрнут и
+            задокументирован, вместо десятка недоделанных экспериментов. В каждом
+            проекте ниже — решения, которые я принял, компромиссы за ними и то, что
+            я изменил бы, если бы было ещё две недели.
+          </p>
+
+          <ul class="principles">
+            <li>
+              <strong>Сначала закончить, потом браться за следующий.</strong>
+              Недоделанный репозиторий читается хуже, чем его отсутствие.
+            </li>
+            <li>
+              <strong>Документировать решение, а не функцию.</strong>
+              Список функций прочитает кто угодно; интересен именно ход рассуждений.
+            </li>
+            <li>
+              <strong>Сделать так, чтобы чужой человек это запустил.</strong>
+              Клонировать, одна команда, работает.
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================= Навыки ============================= -->
+    <section class="section" id="skills" aria-labelledby="skills-title">
+      <div class="container">
+        <header class="section-head reveal">
+          <p class="eyebrow">Инструменты</p>
+          <h2 id="skills-title">Навыки</h2>
+          <p class="section-lead">
+            Инструменты, к которым я обращаюсь, и примерно моя глубина в каждом.
+          </p>
+        </header>
+
+        <div class="skills-grid reveal">
+          <div class="skill-group">
+            <h3>Backend</h3>
+            <ul class="tag-list tag-list-lg">
+              <li>Python</li><li>FastAPI</li><li>Pydantic</li><li>SQLAlchemy</li>
+              <li>PostgreSQL</li><li>Alembic</li><li>JWT-аутентификация</li><li>REST</li>
+            </ul>
+          </div>
+          <div class="skill-group">
+            <h3>Инженерные инструменты</h3>
+            <ul class="tag-list tag-list-lg">
+              <li>Git</li><li>Docker</li><li>GitHub Actions</li><li>pytest</li>
+              <li>Linux</li><li>nginx</li><li>Makefile</li>
+            </ul>
+          </div>
+          <div class="skill-group">
+            <h3>Данные</h3>
+            <ul class="tag-list tag-list-lg">
+              <li>pandas</li><li>NumPy</li><li>matplotlib</li><li>Plotly</li>
+              <li>Streamlit</li><li>Jupyter</li><li>SQL</li>
+            </ul>
+          </div>
+          <div class="skill-group">
+            <h3>Frontend и автоматизация</h3>
+            <ul class="tag-list tag-list-lg">
+              <li>React</li><li>TypeScript</li><li>HTML</li><li>CSS</li>
+              <li>Vanilla JS</li><li>aiogram</li><li>LLM API</li><li>argparse</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================ Путь ============================ -->
+    <section class="section section-alt" id="timeline" aria-labelledby="timeline-title">
+      <div class="container">
+        <header class="section-head reveal">
+          <p class="eyebrow">Путь</p>
+          <h2 id="timeline-title">Путь</h2>
+        </header>
+
+        <ol class="timeline reveal">
+          <li>
+            <span class="timeline-date">2026 — 2027</span>
+            <div class="timeline-body">
+              <h3>BSc / BaIT, информационные технологии</h3>
+              <p>Выпуск летом 2027. Курсовые по алгоритмам, базам данных и проектированию
+                систем; самостоятельный фокус на backend-разработке и инструментах для данных.</p>
+            </div>
+          </li>
+          <li>
+            <span class="timeline-date">2026</span>
+            <div class="timeline-body">
+              <h3>Год портфолио</h3>
+              <p>Пять развёрнутых, покрытых тестами и задокументированных проектов за год —
+                пока этот сайт и REST API, дальше full-stack трекер, дашборд по данным
+                и бот для автоматизации.</p>
+            </div>
+          </li>
+          <li>
+            <span class="timeline-date">Сейчас</span>
+            <div class="timeline-body">
+              <h3>Ищу junior- или стажировочную позицию</h3>
+              <p>Backend- или data-команды в России или удалённо — там, где выкатка и
+                документация это часть работы, а не формальность.</p>
+            </div>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- ============================= Контакты ============================= -->
+    <section class="section" id="contact" aria-labelledby="contact-title">
+      <div class="container contact-wrap">
+        <header class="section-head reveal">
+          <p class="eyebrow">Контакты</p>
+          <h2 id="contact-title">Давайте познакомимся</h2>
+          <p class="section-lead">
+            Открыт к junior-позициям в backend, data и автоматизации — и готов обсудить
+            любой из проектов выше.
+          </p>
+        </header>
+
+        <div class="contact-card reveal">
+          <button class="btn btn-primary" id="copy-email" type="button" data-email="you@example.com">
+            Скопировать почту
+          </button>
+          <a class="btn btn-ghost" href="mailto:you@example.com">you@example.com</a>
+          <a class="btn btn-ghost" href="https://github.com/MeldanLess" rel="noopener">GitHub</a>
+          <a class="btn btn-ghost" href="https://linkedin.com/in/your-linkedin-handle" rel="noopener">LinkedIn</a>
+          <p class="copy-note" id="copy-note" role="status" aria-live="polite"></p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ============================= Подвал ============================= -->
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <p>Сделано с нуля, без фреймворков — <span id="year">2026</span>.</p>
+      <p class="footer-note">
+        Исходники: <a href="https://github.com/MeldanLess/portfolio-site" rel="noopener">github.com/MeldanLess/portfolio-site</a>
+      </p>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>

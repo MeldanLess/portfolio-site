@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630"
+     role="img" aria-label="Your Name — Python: backend, данные, автоматизация">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0f1117"/>
+      <stop offset="100%" stop-color="#1b1734"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1200" height="630" fill="url(#bg)"/>
+
+  <g transform="translate(80 74)">
+    <rect width="64" height="64" rx="14" fill="#4338ca"/>
+    <path d="M25 20 15 32l10 12" fill="none" stroke="#ffffff" stroke-width="5"
+          stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M39 20l10 12-10 12" fill="none" stroke="#ffffff" stroke-width="5"
+          stroke-linecap="round" stroke-linejoin="round"/>
+    <circle cx="32" cy="32" r="3.2" fill="#ffffff"/>
+  </g>
+
+  <text x="80" y="300" fill="#ffffff"
+        font-family="ui-sans-serif, system-ui, 'Segoe UI', Roboto, Arial, sans-serif"
+        font-size="76" font-weight="700" letter-spacing="-2">Your Name</text>
+
+  <text x="80" y="372" fill="#a5b4fc"
+        font-family="ui-sans-serif, system-ui, 'Segoe UI', Roboto, Arial, sans-serif"
+        font-size="38" font-weight="500">Python: backend · данные · автоматизация</text>
+
+  <text x="80" y="440" fill="#9aa3b5"
+        font-family="ui-sans-serif, system-ui, 'Segoe UI', Roboto, Arial, sans-serif"
+        font-size="27">Избранные работы, живые демо и инженерные заметки</text>
+
+  <text x="80" y="536" fill="#ffffff"
+        font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace"
+        font-size="26">your-domain.com</text>
+</svg>

@@ -1,0 +1,755 @@
+/* ==========================================================================
+   Сайт-портфолио — стили
+   --------------------------------------------------------------------------
+   Структура:
+     1. Дизайн-токены (кастомные свойства) и темизация
+     2. Сброс и базовые элементы
+     3. Примитивы раскладки (container, section, grid)
+     4. Компоненты (кнопки, карточки, теги, бейджи, таймлайн)
+     5. Секции страницы (шапка, первый экран, плашка, обо мне, навыки, контакты, подвал)
+     6. Анимации, доступность и печать
+   ========================================================================== */
+
+/* ==========================================================================
+   1. Дизайн-токены и темизация
+   --------------------------------------------------------------------------
+   Цвета живут в кастомных свойствах, поэтому светлая и тёмная темы — это
+   один переключатель, а не два файла стилей. `--bg`, `--text` и прочие
+   читаются любым правилом.
+
+   Темизация работает на трёх уровнях:
+     - :root                -> светлая палитра (по умолчанию)
+     - :root[data-theme=dark] -> тёмная палитра, заданная выбором пользователя
+     - @media (prefers-color-scheme: dark) -> тёмная палитра, когда ОС её
+       просит И пользователь явно не выбрал светлую.
+   Тёмная палитра объявлена дважды намеренно: альтернатива (CSS-функция
+   `light-dark()`) требует очень свежих браузеров, а портфолио, которое
+   в старом браузере рендерится без стилей, — это сломанное портфолио.
+   ========================================================================== */
+
+:root {
+  color-scheme: light;
+
+  --bg:          #ffffff;
+  --bg-alt:      #f6f7f9;
+  --surface:     #ffffff;
+  --text:        #10131a;
+  --text-soft:   #4d566a;
+  --text-faint:  #6b7488;
+  --line:        #e3e6ec;
+  --line-strong: #cbd1dc;
+  --accent:      #4338ca;
+  --accent-text: #ffffff;
+  --accent-soft: rgba(67, 56, 202, 0.09);
+  --live:        #0f7b4f;
+  --live-soft:   rgba(15, 123, 79, 0.11);
+  --shadow-sm:   0 1px 2px rgba(16, 19, 26, 0.05);
+  --shadow-md:   0 6px 20px -6px rgba(16, 19, 26, 0.13);
+  --shadow-lg:   0 18px 40px -18px rgba(16, 19, 26, 0.22);
+
+  --radius-sm: 8px;
+  --radius:    12px;
+  --radius-lg: 18px;
+
+  --measure: 68ch;
+  --header-h: 64px;
+
+  --font-sans: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto,
+               "Helvetica Neue", Arial, "Noto Sans", sans-serif;
+  --font-mono: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas,
+               "Liberation Mono", monospace;
+}
+
+:root[data-theme="dark"] {
+  color-scheme: dark;
+
+  --bg:          #0b0d12;
+  --bg-alt:      #10131a;
+  --surface:     #141821;
+  --text:        #e9ecf2;
+  --text-soft:   #b3bccc;
+  --text-faint:  #8b93a6;
+  --line:        #232936;
+  --line-strong: #333a4a;
+  --accent:      #a5b4fc;
+  --accent-text: #0b0d12;
+  --accent-soft: rgba(165, 180, 252, 0.12);
+  --live:        #4ade9a;
+  --live-soft:   rgba(74, 222, 154, 0.14);
+  --shadow-sm:   0 1px 2px rgba(0, 0, 0, 0.4);
+  --shadow-md:   0 6px 20px -6px rgba(0, 0, 0, 0.55);
+  --shadow-lg:   0 18px 40px -18px rgba(0, 0, 0, 0.7);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    color-scheme: dark;
+
+    --bg:          #0b0d12;
+    --bg-alt:      #10131a;
+    --surface:     #141821;
+    --text:        #e9ecf2;
+    --text-soft:   #b3bccc;
+    --text-faint:  #8b93a6;
+    --line:        #232936;
+    --line-strong: #333a4a;
+    --accent:      #a5b4fc;
+    --accent-text: #0b0d12;
+    --accent-soft: rgba(165, 180, 252, 0.12);
+    --live:        #4ade9a;
+    --live-soft:   rgba(74, 222, 154, 0.14);
+    --shadow-sm:   0 1px 2px rgba(0, 0, 0, 0.4);
+    --shadow-md:   0 6px 20px -6px rgba(0, 0, 0, 0.55);
+    --shadow-lg:   0 18px 40px -18px rgba(0, 0, 0, 0.7);
+  }
+}
+
+/* ==========================================================================
+   2. Сброс и базовые элементы
+   ========================================================================== */
+
+*,
+*::before,
+*::after { box-sizing: border-box; }
+
+* { margin: 0; }
+
+html {
+  -webkit-text-size-adjust: 100%;
+  scroll-behavior: smooth;
+  scroll-padding-top: calc(var(--header-h) + 16px);
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-sans);
+  font-size: 1rem;
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  min-height: 100vh;
+}
+
+img, svg, video { display: block; max-width: 100%; height: auto; }
+
+h1, h2, h3, h4 {
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  font-weight: 650;
+  text-wrap: balance;
+}
+
+h1 { font-size: clamp(2.1rem, 1.2rem + 3.6vw, 3.5rem); }
+h2 { font-size: clamp(1.6rem, 1.1rem + 1.8vw, 2.2rem); }
+h3 { font-size: 1.125rem; }
+
+p { text-wrap: pretty; }
+
+a {
+  color: var(--accent);
+  text-decoration-color: color-mix(in srgb, var(--accent) 40%, transparent);
+  text-underline-offset: 3px;
+}
+
+a:hover { text-decoration-color: currentColor; }
+
+code, kbd, pre { font-family: var(--font-mono); font-size: 0.9em; }
+
+ul, ol { padding: 0; list-style: none; }
+
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+::selection { background: var(--accent); color: var(--accent-text); }
+
+/* Только для скринридеров, но с фокусом */
+.skip-link {
+  position: absolute;
+  left: -9999px;
+  top: 0;
+  z-index: 100;
+  padding: 0.75rem 1rem;
+  background: var(--accent);
+  color: var(--accent-text);
+  border-radius: 0 0 var(--radius-sm) 0;
+  font-weight: 600;
+}
+
+.skip-link:focus { left: 0; }
+
+/* ==========================================================================
+   3. Примитивы раскладки
+   ========================================================================== */
+
+.container {
+  width: 100%;
+  max-width: 1080px;
+  margin-inline: auto;
+  padding-inline: clamp(1rem, 4vw, 2.5rem);
+}
+
+.section { padding-block: clamp(3.5rem, 8vw, 6.5rem); }
+
+.section-alt {
+  background: var(--bg-alt);
+  border-block: 1px solid var(--line);
+}
+
+.section-head { max-width: var(--measure); margin-bottom: 2.5rem; }
+
+.section-lead {
+  margin-top: 0.85rem;
+  color: var(--text-soft);
+  font-size: 1.05rem;
+}
+
+.eyebrow {
+  display: inline-block;
+  margin-bottom: 0.6rem;
+  font-size: 0.78rem;
+  font-weight: 650;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+.accent { color: var(--accent); }
+
+.grid { display: grid; gap: 1.25rem; }
+
+.prose { max-width: var(--measure); }
+.prose p + p { margin-top: 1rem; }
+.prose strong { color: var(--text); font-weight: 650; }
+
+/* ==========================================================================
+   4. Компоненты
+   ========================================================================== */
+
+/* --- Кнопки --- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.7rem 1.25rem;
+  border: 1px solid transparent;
+  border-radius: var(--radius-sm);
+  font: inherit;
+  font-weight: 600;
+  font-size: 0.95rem;
+  text-decoration: none;
+  cursor: pointer;
+  transition: transform 0.15s ease, box-shadow 0.15s ease,
+              background-color 0.15s ease, border-color 0.15s ease;
+}
+
+.btn:hover { transform: translateY(-1px); }
+.btn:active { transform: translateY(0); }
+
+.btn-primary {
+  background: var(--accent);
+  color: var(--accent-text);
+  box-shadow: var(--shadow-sm);
+}
+
+.btn-primary:hover { box-shadow: var(--shadow-md); }
+
+.btn-ghost {
+  background: var(--surface);
+  color: var(--text);
+  border-color: var(--line-strong);
+}
+
+.btn-ghost:hover { border-color: var(--accent); color: var(--accent); }
+
+.btn-sm { padding: 0.45rem 0.85rem; font-size: 0.875rem; }
+
+.icon-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  padding: 0;
+  background: transparent;
+  color: var(--text-soft);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: color 0.15s ease, border-color 0.15s ease, background-color 0.15s ease;
+}
+
+.icon-btn:hover { color: var(--accent); border-color: var(--accent); }
+
+.icon {
+  width: 20px;
+  height: 20px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+/* Луна показывается только в светлой теме, солнце — только в тёмной. */
+.icon-moon { display: none; }
+:root[data-theme="dark"] .icon-sun { display: none; }
+:root[data-theme="dark"] .icon-moon { display: block; }
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .icon-sun { display: none; }
+  :root:not([data-theme="light"]) .icon-moon { display: block; }
+}
+
+/* --- Карточки проектов --- */
+.projects {
+  grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+}
+
+/* Заметка под сеткой: что впереди, без того чтобы делать вид, что это уже
+   существует. */
+.work-note {
+  max-width: var(--measure);
+  margin-top: 1.75rem;
+  padding-left: 1rem;
+  border-left: 2px solid var(--line-strong);
+  color: var(--text-soft);
+  font-size: 0.95rem;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+  padding: 1.4rem;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+.card:hover {
+  transform: translateY(-3px);
+  border-color: var(--line-strong);
+  box-shadow: var(--shadow-md);
+}
+
+.card-top {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 0.75rem;
+}
+
+.card-body {
+  color: var(--text-soft);
+  font-size: 0.95rem;
+}
+
+.card-links {
+  display: flex;
+  gap: 1rem;
+  margin-top: auto;
+  padding-top: 0.35rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+/* --- Бейджи --- */
+.badge {
+  flex-shrink: 0;
+  padding: 0.15rem 0.55rem;
+  border-radius: 999px;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+}
+
+.badge-live {
+  background: var(--live-soft);
+  color: var(--live);
+}
+
+/* --- Пилюли тегов --- */
+.tag-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+.tag-list li {
+  padding: 0.2rem 0.6rem;
+  background: var(--accent-soft);
+  color: var(--text-soft);
+  border-radius: 999px;
+  font-size: 0.78rem;
+  font-weight: 550;
+  white-space: nowrap;
+}
+
+.tag-list-lg li {
+  padding: 0.35rem 0.8rem;
+  font-size: 0.85rem;
+}
+
+/* --- Список принципов --- */
+.principles {
+  display: grid;
+  gap: 0.85rem;
+  margin-top: 1.5rem;
+}
+
+.principles li {
+  position: relative;
+  padding-left: 1.6rem;
+  color: var(--text-soft);
+}
+
+.principles li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.62em;
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: 50%;
+  background: var(--accent);
+}
+
+/* --- Таймлайн --- */
+.timeline {
+  display: grid;
+  gap: 2rem;
+  margin-top: 0.5rem;
+  padding-left: 1.5rem;
+  border-left: 2px solid var(--line);
+}
+
+.timeline li { position: relative; }
+
+.timeline li::before {
+  content: "";
+  position: absolute;
+  left: -1.5rem;
+  top: 0.45rem;
+  width: 0.75rem;
+  height: 0.75rem;
+  border-radius: 50%;
+  background: var(--bg-alt);
+  border: 2px solid var(--accent);
+}
+
+.timeline-date {
+  display: inline-block;
+  margin-bottom: 0.35rem;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+.timeline-body h3 { margin-bottom: 0.3rem; }
+.timeline-body p { color: var(--text-soft); max-width: var(--measure); }
+
+/* ==========================================================================
+   5. Секции страницы
+   ========================================================================== */
+
+/* --- Шапка --- */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: color-mix(in srgb, var(--bg) 85%, transparent);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--line);
+}
+
+.header-inner {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  min-height: var(--header-h);
+}
+
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  color: var(--text);
+  font-weight: 700;
+  text-decoration: none;
+  letter-spacing: -0.01em;
+}
+
+.brand-mark {
+  display: grid;
+  place-items: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 9px;
+  background: var(--accent);
+  color: var(--accent-text);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}
+
+.site-nav { margin-left: auto; }
+
+.site-nav ul { display: flex; gap: 1.75rem; }
+
+.site-nav a {
+  color: var(--text-soft);
+  font-size: 0.93rem;
+  font-weight: 550;
+  text-decoration: none;
+  transition: color 0.15s ease;
+}
+
+.site-nav a:hover { color: var(--accent); }
+
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.nav-toggle { display: none; }
+
+/* --- Первый экран --- */
+.hero { padding-block: clamp(3.5rem, 9vw, 7.5rem) clamp(2.5rem, 6vw, 4.5rem); }
+
+.hero-inner { max-width: 760px; }
+
+.hero-lead {
+  margin-top: 1.1rem;
+  max-width: 60ch;
+  font-size: clamp(1.05rem, 1rem + 0.35vw, 1.25rem);
+  color: var(--text-soft);
+}
+
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 2rem;
+}
+
+.hero-meta {
+  display: grid;
+  gap: 0.5rem;
+  margin-top: 2.75rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--line);
+  font-size: 0.92rem;
+  color: var(--text-soft);
+}
+
+.hero-meta strong {
+  display: inline-block;
+  min-width: 5.5rem;
+  color: var(--text);
+  font-weight: 650;
+}
+
+/* --- Плашка «Сейчас» --- */
+.strip {
+  background: var(--accent-soft);
+  border-block: 1px solid var(--line);
+}
+
+.strip-inner {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.5rem 1rem;
+  padding-block: 1rem;
+}
+
+.strip-label {
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+.strip-text { color: var(--text-soft); font-size: 0.95rem; }
+
+/* --- Обо мне --- */
+.about-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 1rem;
+}
+
+@media (min-width: 900px) {
+  .about-grid { grid-template-columns: 0.85fr 1.6fr; gap: 3rem; }
+  .about-grid .section-head { margin-bottom: 0; }
+}
+
+/* --- Навыки --- */
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: 1.75rem;
+}
+
+.skill-group h3 {
+  margin-bottom: 0.75rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid var(--line);
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-faint);
+}
+
+/* --- Контакты --- */
+.contact-wrap { max-width: 720px; margin-inline: auto; text-align: center; }
+.contact-wrap .section-head { margin-inline: auto; }
+
+.contact-card {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.75rem;
+  margin-top: 2rem;
+  padding: 1.75rem;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+}
+
+.copy-note {
+  flex-basis: 100%;
+  min-height: 1.4rem;
+  font-size: 0.88rem;
+  color: var(--live);
+}
+
+/* --- Страница ошибки --- */
+.error-page {
+  max-width: 620px;
+  margin-inline: auto;
+  text-align: center;
+}
+
+.error-page .section-lead { margin-inline: auto; }
+
+.error-action { margin-top: 2rem; }
+
+/* --- Подвал --- */
+.site-footer {
+  padding-block: 2rem;
+  border-top: 1px solid var(--line);
+  background: var(--bg-alt);
+  font-size: 0.9rem;
+  color: var(--text-faint);
+}
+
+.footer-inner {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 0.5rem 1.5rem;
+}
+
+/* ==========================================================================
+   6. Анимации, доступность и печать
+   ========================================================================== */
+
+/* Появление при прокрутке. Скрытое состояние ограничено селектором `.js`,
+   поэтому если JavaScript так и не запустится, ничего не останется
+   невидимым. */
+.js .reveal {
+  opacity: 0;
+  transform: translateY(14px);
+  transition: opacity 0.55s ease, transform 0.55s ease;
+}
+
+.js .reveal.is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .js .reveal { opacity: 1; transform: none; }
+}
+
+@media (max-width: 820px) {
+  /* Без JavaScript навигация остаётся обычным видимым списком, который
+     переносится на две строки — все ссылки остаются доступны. */
+  .site-nav { margin-left: auto; }
+
+  .site-nav ul {
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    gap: 0.35rem 1.25rem;
+  }
+
+  /* `.nav-ready` добавляется в main.js, когда переключатель уже подключён.
+     Только тогда навигация становится раскрывающейся панелью — и только
+     тогда появляется сам переключатель. Если скрипт не загрузился, шапка
+     деградирует до обычного списка, а не до сломанного оверлея. */
+  .nav-ready .nav-toggle { display: inline-flex; }
+
+  .nav-ready .site-nav {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    margin: 0;
+    padding: 0.5rem clamp(1rem, 4vw, 2.5rem) 1.25rem;
+    background: var(--bg);
+    border-bottom: 1px solid var(--line);
+    box-shadow: var(--shadow-md);
+  }
+
+  .nav-ready .site-nav ul {
+    flex-direction: column;
+    justify-content: flex-start;
+    gap: 0;
+  }
+
+  .nav-ready .site-nav a {
+    display: block;
+    padding: 0.7rem 0;
+    border-bottom: 1px solid var(--line);
+    font-size: 1rem;
+  }
+
+  .nav-ready .site-nav ul li:last-child a { border-bottom: 0; }
+}
+
+@media print {
+  .site-header, .site-footer, .skip-link, .icon-btn { display: none; }
+
+  body { background: #fff; color: #000; font-size: 11pt; }
+
+  .section { padding-block: 1.25rem; }
+
+  .card { break-inside: avoid; box-shadow: none; }
+
+  a[href^="http"]::after { content: " (" attr(href) ")"; font-size: 9pt; color: #555; }
+}
