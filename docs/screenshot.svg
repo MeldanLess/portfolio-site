@@ -1,0 +1,98 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 800" width="1280" height="800"
+     role="img" aria-label="Заглушка со снимком экрана сайта-портфолио">
+  <rect width="1280" height="800" fill="#eef0f4"/>
+
+  <!-- рамка браузера -->
+  <rect x="40" y="40" width="1200" height="720" rx="14" fill="#ffffff" stroke="#d8dce4" stroke-width="2"/>
+  <rect x="40" y="40" width="1200" height="44" rx="14" fill="#f4f6f9"/>
+  <rect x="40" y="70" width="1200" height="14" fill="#f4f6f9"/>
+  <circle cx="70" cy="62" r="6" fill="#e06c6c"/>
+  <circle cx="92" cy="62" r="6" fill="#e3c26c"/>
+  <circle cx="114" cy="62" r="6" fill="#6fc78a"/>
+  <rect x="150" y="50" width="520" height="24" rx="12" fill="#e9ecf2"/>
+  <text x="172" y="67" fill="#8a93a6" font-family="ui-monospace, Menlo, Consolas, monospace"
+        font-size="13">your-domain.com</text>
+
+  <!-- шапка сайта -->
+  <rect x="120" y="120" width="40" height="40" rx="11" fill="#4338ca"/>
+  <text x="132" y="147" fill="#ffffff" font-family="ui-sans-serif, system-ui, sans-serif"
+        font-size="15" font-weight="700">YN</text>
+  <text x="174" y="146" fill="#10131a" font-family="ui-sans-serif, system-ui, sans-serif"
+        font-size="16" font-weight="700">Your Name</text>
+  <g fill="#4d566a" font-family="ui-sans-serif, system-ui, sans-serif" font-size="14">
+    <text x="790" y="146">Работы</text>
+    <text x="866" y="146">Обо мне</text>
+    <text x="944" y="146">Навыки</text>
+    <text x="1012" y="146">Путь</text>
+    <text x="1064" y="146">Контакты</text>
+  </g>
+
+  <!-- первый экран -->
+  <text x="120" y="230" fill="#4338ca" font-family="ui-sans-serif, system-ui, sans-serif"
+        font-size="13" font-weight="700" letter-spacing="1.4">ОТКРЫТ К JUNIOR- И СТАЖИРОВОЧНЫМ ПОЗИЦИЯМ — ЛЕТО 2027</text>
+  <text x="120" y="292" fill="#10131a" font-family="ui-sans-serif, system-ui, sans-serif"
+        font-size="52" font-weight="700" letter-spacing="-1.6">Привет, я <tspan fill="#4338ca">Your Name</tspan>.</text>
+  <text x="120" y="338" fill="#4d566a" font-family="ui-sans-serif, system-ui, sans-serif" font-size="18">
+    Делаю backend на Python, инструменты для данных и автоматизацию.
+  </text>
+
+  <rect x="120" y="372" width="176" height="46" rx="9" fill="#4338ca"/>
+  <text x="142" y="400" fill="#ffffff" font-family="ui-sans-serif, system-ui, sans-serif"
+        font-size="15" font-weight="600">Смотреть проекты</text>
+  <rect x="310" y="372" width="142" height="46" rx="9" fill="#ffffff" stroke="#cbd1dc" stroke-width="1.5"/>
+  <text x="334" y="400" fill="#10131a" font-family="ui-sans-serif, system-ui, sans-serif"
+        font-size="15" font-weight="600">Написать мне</text>
+
+  <!-- карточки проектов -->
+  <g>
+    <rect x="120" y="466" width="330" height="150" rx="16" fill="#ffffff" stroke="#e3e6ec"/>
+    <text x="144" y="504" fill="#10131a" font-family="ui-sans-serif, system-ui, sans-serif"
+          font-size="17" font-weight="650">Сайт-портфолио</text>
+    <rect x="378" y="484" width="48" height="20" rx="10" fill="#e3f5ec"/>
+    <text x="386" y="499" fill="#0f7b4f" font-family="ui-sans-serif, system-ui, sans-serif"
+          font-size="10" font-weight="700">ОНЛАЙН</text>
+    <text x="144" y="536" fill="#4d566a" font-family="ui-sans-serif, system-ui, sans-serif" font-size="13">
+      Этот сайт. Без сборки и без зависимостей.
+    </text>
+    <text x="144" y="590" fill="#4338ca" font-family="ui-sans-serif, system-ui, sans-serif"
+          font-size="13" font-weight="600">Исходники</text>
+    <text x="216" y="590" fill="#4338ca" font-family="ui-sans-serif, system-ui, sans-serif"
+          font-size="13" font-weight="600">Живое демо</text>
+  </g>
+  <g>
+    <rect x="474" y="466" width="330" height="150" rx="16" fill="#ffffff" stroke="#e3e6ec"/>
+    <text x="498" y="504" fill="#10131a" font-family="ui-sans-serif, system-ui, sans-serif"
+          font-size="17" font-weight="650">REST API</text>
+    <rect x="732" y="484" width="48" height="20" rx="10" fill="#e3f5ec"/>
+    <text x="740" y="499" fill="#0f7b4f" font-family="ui-sans-serif, system-ui, sans-serif"
+          font-size="10" font-weight="700">ОНЛАЙН</text>
+    <text x="498" y="536" fill="#4d566a" font-family="ui-sans-serif, system-ui, sans-serif" font-size="13">
+      FastAPI, PostgreSQL, Docker, 68 тестов.
+    </text>
+    <text x="498" y="590" fill="#4338ca" font-family="ui-sans-serif, system-ui, sans-serif"
+          font-size="13" font-weight="600">Исходники</text>
+    <text x="570" y="590" fill="#4338ca" font-family="ui-sans-serif, system-ui, sans-serif"
+          font-size="13" font-weight="600">Документация API</text>
+  </g>
+  <!-- заметка «впереди ещё три» — не карточка проекта: незаконченная работа
+       карточек не получает -->
+  <g>
+    <rect x="828" y="466" width="330" height="150" rx="16" fill="#f7f8fa" stroke="#e3e6ec"/>
+    <rect x="828" y="466" width="3" height="150" fill="#cbd1dc"/>
+    <text x="852" y="504" fill="#4d566a" font-family="ui-sans-serif, system-ui, sans-serif"
+          font-size="15" font-weight="650">Впереди ещё три</text>
+    <text x="852" y="536" fill="#6b7385" font-family="ui-sans-serif, system-ui, sans-serif" font-size="13">
+      Трекер финансов, дашборд и бот — они
+    </text>
+    <text x="852" y="556" fill="#6b7385" font-family="ui-sans-serif, system-ui, sans-serif" font-size="13">
+      появятся здесь, когда будут готовы.
+    </text>
+  </g>
+
+  <!-- подпись-заглушка -->
+  <rect x="40" y="716" width="1200" height="44" rx="10" fill="#10131a" fill-opacity="0.85"/>
+  <text x="640" y="744" fill="#e9ecf2" text-anchor="middle"
+        font-family="ui-sans-serif, system-ui, sans-serif" font-size="14">
+    Заглушка — замените docs/screenshot.svg настоящим снимком сайта
+  </text>
+</svg>
