@@ -1,0 +1,33 @@
+# --- Node ---
+node_modules/
+npm-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+.npm/
+
+# --- Local environment / secrets ---
+.env
+.env.*
+!.env.example
+
+# --- Build & coverage output ---
+dist/
+build/
+coverage/
+*.log
+.cache/
+
+# --- Editors ---
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# --- OS ---
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# --- Local certificates for a custom domain ---
+*.pem
+*.key

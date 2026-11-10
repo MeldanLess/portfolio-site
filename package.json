@@ -1,0 +1,21 @@
+{
+  "name": "portfolio-site",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Сайт-портфолио — статичные HTML/CSS/JS, без шага сборки и без зависимостей во время выполнения, деплой из CI.",
+  "type": "module",
+  "scripts": {
+    "test": "node --test tests/site.test.mjs",
+    "serve": "node scripts/serve.mjs",
+    "start": "node scripts/serve.mjs"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "keywords": [
+    "portfolio",
+    "static-site",
+    "github-pages"
+  ],
+  "license": "MIT"
+}
