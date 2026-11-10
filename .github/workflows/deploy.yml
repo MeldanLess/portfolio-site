@@ -1,0 +1,51 @@
+name: Публикация в GitHub Pages
+
+# Публикует папку `site/` в GitHub Pages при каждом пуше в main.
+# Сборки нет: репозиторий *является* сайтом, поэтому «сборка» — это копирование.
+# Это делает развёртывания быстрыми, проверяемыми и неломаемыми обновлением
+# инструментов.
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch: {}
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# Никогда не запускаем два развёртывания одновременно — недоделанный деплой
+# хуже отложенного.
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    name: Публикация
+    runs-on: ubuntu-latest
+
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+
+    steps:
+      - name: Скачать репозиторий
+        uses: actions/checkout@v4
+
+      - name: Настроить GitHub Pages
+        uses: actions/configure-pages@v5
+
+      - name: Выполнить смоук-тесты перед публикацией
+        run: |
+          npm test
+
+      - name: Загрузить сайт как артефакт Pages
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: ./site
+
+      - name: Опубликовать в GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

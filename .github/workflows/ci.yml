@@ -1,0 +1,41 @@
+name: CI
+
+# Запускается при каждом пуше и pull request: ничего не устанавливает, ничего
+# не линтует — просто выполняет смоук-тесты. Быстро и громко падает, если
+# сломалась ссылка.
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    name: Смоук-тесты
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Скачать репозиторий
+        uses: actions/checkout@v4
+
+      - name: Установить Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Выполнить тесты
+        run: npm test
+
+      - name: Проверить, что в публикуемой разметке не осталось плейсхолдеров
+        # Информационно: падает только если плейсхолдер просочился в файл,
+        # который публикуется. Список обновляйте при персонификации.
+        run: |
+          if grep -rIn --include='*.html' --include='*.xml' --include='*.txt' \
+               -e 'your-' -e 'you@example.com' -e 'Your Name' \
+               site/ ; then
+            echo "::warning::В site/ остались плейсхолдеры — замените их перед публикацией."
+          fi
