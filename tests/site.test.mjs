@@ -247,6 +247,27 @@ describe('карточки проектов', () => {
     }
   });
 
+  // Ссылка, которая ведёт на плейсхолдер, для посетителя выглядит как
+  // рабочая: он нажимает «Демо» и попадает на пустую страницу. Пока адреса
+  // нет, вторая ссылка ведёт в README репозитория — это честно и полезно.
+  test('ни одна ссылка на странице не ведёт на плейсхолдер', () => {
+    const DEAD_HOSTS = ['your-domain.com', 'example.com', 'api.example.com', 'www.example.com'];
+    const links = [...html.matchAll(/<a[^>]+href="(https?:\/\/[^"]+)"/g)].map((m) => m[1]);
+    const dead = links.filter((href) => DEAD_HOSTS.includes(new URL(href).host));
+    assert.deepEqual(dead, [], `ссылки ведут на плейсхолдеры: ${dead.join(', ')}`);
+  });
+
+  // Метка «Онлайн» обещает живой адрес. Проект, который не задеплоен, так
+  // называть нельзя: сайт не должен обещать больше, чем есть.
+  test('метка «Онлайн» стоит только у проекта с живым адресом', () => {
+    const live = cards.filter((card) => card.includes('badge-live'));
+    for (const card of live) {
+      const hrefs = [...card.matchAll(/href="([^"]+)"/g)].map((m) => m[1]);
+      const hasLiveAddress = hrefs.some((href) => !href.includes('github.com'));
+      assert.ok(hasLiveAddress, 'карточка обещает «Онлайн», но живого адреса у неё нет');
+    }
+  });
+
   test('названия проектов не повторяются', () => {
     const titles = cards.map((card) => card.match(/<h3>([^<]+)<\/h3>/)[1]);
     assert.equal(new Set(titles).size, titles.length, 'название проекта повторяется');
