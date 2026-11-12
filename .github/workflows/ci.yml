@@ -35,7 +35,7 @@ jobs:
         # который публикуется. Список обновляйте при персонификации.
         run: |
           if grep -rIn --include='*.html' --include='*.xml' --include='*.txt' \
-               -e 'your-' -e 'you@example.com' -e 'Your Name' \
+               -e 'your-' -e 'example.com' -e 'linkedin.com/in/' \
                site/ ; then
             echo "::warning::В site/ остались плейсхолдеры — замените их перед публикацией."
           fi

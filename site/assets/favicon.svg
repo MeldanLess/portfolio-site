@@ -1,8 +1,6 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="YN monogram">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="МД monogram">
   <rect width="64" height="64" rx="14" fill="#4338ca"/>
-  <path d="M25 20 15 32l10 12" fill="none" stroke="#ffffff" stroke-width="5"
-        stroke-linecap="round" stroke-linejoin="round"/>
-  <path d="M39 20l10 12-10 12" fill="none" stroke="#ffffff" stroke-width="5"
-        stroke-linecap="round" stroke-linejoin="round"/>
-  <circle cx="32" cy="32" r="3.2" fill="#ffffff"/>
+  <text x="32" y="33" text-anchor="middle" dominant-baseline="central"
+        font-family="Segoe UI, Roboto, Arial, sans-serif" font-size="25" font-weight="700"
+        fill="#ffffff">МД</text>
 </svg>
