@@ -11,14 +11,14 @@
   <circle cx="114" cy="62" r="6" fill="#6fc78a"/>
   <rect x="150" y="50" width="520" height="24" rx="12" fill="#e9ecf2"/>
   <text x="172" y="67" fill="#8a93a6" font-family="ui-monospace, Menlo, Consolas, monospace"
-        font-size="13">your-domain.com</text>
+        font-size="13">meldanless.github.io/portfolio-site</text>
 
   <!-- шапка сайта -->
   <rect x="120" y="120" width="40" height="40" rx="11" fill="#4338ca"/>
   <text x="132" y="147" fill="#ffffff" font-family="ui-sans-serif, system-ui, sans-serif"
-        font-size="15" font-weight="700">YN</text>
+        font-size="15" font-weight="700">МД</text>
   <text x="174" y="146" fill="#10131a" font-family="ui-sans-serif, system-ui, sans-serif"
-        font-size="16" font-weight="700">Your Name</text>
+        font-size="16" font-weight="700">Мелека Данила</text>
   <g fill="#4d566a" font-family="ui-sans-serif, system-ui, sans-serif" font-size="14">
     <text x="790" y="146">Работы</text>
     <text x="866" y="146">Обо мне</text>
@@ -31,7 +31,7 @@
   <text x="120" y="230" fill="#4338ca" font-family="ui-sans-serif, system-ui, sans-serif"
         font-size="13" font-weight="700" letter-spacing="1.4">ОТКРЫТ К JUNIOR- И СТАЖИРОВОЧНЫМ ПОЗИЦИЯМ — ЛЕТО 2027</text>
   <text x="120" y="292" fill="#10131a" font-family="ui-sans-serif, system-ui, sans-serif"
-        font-size="52" font-weight="700" letter-spacing="-1.6">Привет, я <tspan fill="#4338ca">Your Name</tspan>.</text>
+        font-size="52" font-weight="700" letter-spacing="-1.6">Привет, я <tspan fill="#4338ca">Мелека Данила</tspan>.</text>
   <text x="120" y="338" fill="#4d566a" font-family="ui-sans-serif, system-ui, sans-serif" font-size="18">
     Делаю backend на Python, инструменты для данных и автоматизацию.
   </text>
