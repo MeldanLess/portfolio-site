@@ -208,7 +208,7 @@ describe('карточки проектов', () => {
   // когда проект развёрнут и задокументирован, а не в день, когда начат.
   // Незаконченная работа в списке — именно то, ради чего этот набор тестов и
   // существует.
-  const SHIPPED = ['portfolio-site', 'rest-api', 'kopilka'];
+  const SHIPPED = ['portfolio-site', 'rest-api', 'kopilka', 'study-bot'];
 
   const cards = [...html.matchAll(/<article class="card[^"]*">([\s\S]*?)<\/article>/g)].map(
     (match) => match[1]
